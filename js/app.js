@@ -1,7 +1,5 @@
 let totalGeral = 0;
 let carrinhoDeCompras = [];
-// document.getElementById('lista-produtos').innerHTML = '';
-// document.getElementById('valor-total').textContent = 'R$ 0';
 limpar();
 
 function adicionar() {
@@ -10,9 +8,6 @@ function adicionar() {
     let nomeDoProduto = produto.split('-')[0];
     let valorUnitario = parseFloat(produto.split('R$')[1]);
     let quantidade = parseInt(document.getElementById('quantidade').value);
-    // alert(nomeDoProduto);
-    // alert(valorUnitario);
-    // alert(quantidade.value);
 
     // verificar se o produto selecionado é válido:
     if(!produto || produto.trim() === "") {
@@ -28,7 +23,6 @@ function adicionar() {
 
     //calcular o preço, o nosso subtotal:
     let preco = parseFloat(quantidade * valorUnitario);
-    // alert(preco);
 
     // Verificar se o produto já está no carrinho:
     let produtoJaAdicionado = carrinhoDeCompras.find(item => item.nome == nomeDoProduto);  // chamada de expressão lambda
@@ -49,6 +43,8 @@ function adicionar() {
     // adicionar no carrinho:
     let lista = document.getElementById('lista-produtos');
     lista.innerHTML = '';  // limpar a lista antes de adicionar os produtos
+    
+    // percorrer o carrinho de compras e adicionar os produtos na lista:
     carrinhoDeCompras.forEach(item => {
         lista.innerHTML = lista.innerHTML + `
             <section class="carrinho__produtos__produto">
